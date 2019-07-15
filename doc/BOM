@@ -1,0 +1,32 @@
+wersja steampunk
+
+płytka uniwersalna
+akumulator 14500
+wyświetlacz BQ M322RD
+rezonator 18,432MHz
+goldpin male 2x1
+2x tact
+1x SPDT
+1x kondensator 100u THT
+2x kondensator 100n SMD
+1x stabilizator
+2x rezystor 10k SMD
+7x rezystor 120R SMD
+1x podstawka
+1x STM32F030
+
+wersja daily
+
+płytka uniwersalna/trawiona
+akumulator lipo akyga
+wyświetlacz LED 0,28"(LED-AF02841BS)
+rezonator 18,432MHz niski
+goldpin male 2x1
+2x tact
+1x SPDT
+1x kondensator 100u THT
+2x kondensator 100n SMD
+1x stabilizator
+2x rezystor 10k SMD
+7x rezystor 120R SMD
+1x STM32F030
