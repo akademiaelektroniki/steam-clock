@@ -1,5 +1,5 @@
 EESchema Schematic File Version 4
-LIBS:steam_clk-cache
+LIBS:daily_clk-cache
 EELAYER 29 0
 EELAYER END
 $Descr User 7087 7874
@@ -219,8 +219,6 @@ Wire Wire Line
 	5400 5600 5400 5700
 Wire Wire Line
 	5400 5700 4800 5700
-Wire Wire Line
-	1750 2700 3250 2700
 $Comp
 L power:+3V3 #PWR02
 U 1 1 5D31F752
@@ -235,12 +233,6 @@ $EndComp
 Wire Wire Line
 	5400 5300 5650 5300
 Connection ~ 5400 5300
-Wire Wire Line
-	1750 4700 2200 4700
-Wire Wire Line
-	1750 3550 1750 4700
-Wire Wire Line
-	1750 3250 1750 2700
 Connection ~ 4050 4700
 Connection ~ 5700 4400
 Wire Wire Line
@@ -372,17 +364,6 @@ F 1 "10k" H 2270 3655 50  0000 L CNN
 F 2 "Resistor_SMD:R_0603_1608Metric" V 2130 3700 50  0001 C CNN
 F 3 "~" H 2200 3700 50  0001 C CNN
 	1    2200 3700
-	1    0    0    -1  
-$EndComp
-$Comp
-L Device:C C5
-U 1 1 5D1D34FD
-P 1750 3400
-F 0 "C5" H 1865 3446 50  0000 L CNN
-F 1 "100u" H 1865 3355 50  0000 L CNN
-F 2 "Capacitor_THT:CP_Radial_D5.0mm_P2.50mm" H 1788 3250 50  0001 C CNN
-F 3 "~" H 1750 3400 50  0001 C CNN
-	1    1750 3400
 	1    0    0    -1  
 $EndComp
 $Comp
