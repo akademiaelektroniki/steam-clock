@@ -455,28 +455,6 @@ Wire Wire Line
 Connection ~ 3200 5700
 Wire Wire Line
 	3200 5700 3900 5700
-$Comp
-L Connector:Conn_01x01_Female J2
-U 1 1 5D1EF089
-P 2150 5300
-F 0 "J2" H 2042 5075 50  0000 C CNN
-F 1 "Cell+" H 2042 5166 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 2150 5300 50  0001 C CNN
-F 3 "~" H 2150 5300 50  0001 C CNN
-	1    2150 5300
-	-1   0    0    1   
-$EndComp
-$Comp
-L Connector:Conn_01x01_Female J3
-U 1 1 5D1EFE3D
-P 2150 5600
-F 0 "J3" H 2042 5375 50  0000 C CNN
-F 1 "Cell-" H 2042 5466 50  0000 C CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" H 2150 5600 50  0001 C CNN
-F 3 "~" H 2150 5600 50  0001 C CNN
-	1    2150 5600
-	-1   0    0    1   
-$EndComp
 Wire Wire Line
 	2350 5300 3200 5300
 Connection ~ 3200 5300
@@ -484,4 +462,17 @@ Wire Wire Line
 	2350 5600 2550 5600
 Text Label 3900 700  0    50   ~ 0
 Display
+$Comp
+L Connector:Conn_01x02_Female J2
+U 1 1 5D2E3615
+P 2150 5400
+F 0 "J2" H 2050 5100 50  0000 C CNN
+F 1 "Bat" H 2042 5166 50  0000 C CNN
+F 2 "Connector_PinHeader_1.27mm:PinHeader_1x02_P1.27mm_Vertical" H 2150 5400 50  0001 C CNN
+F 3 "~" H 2150 5400 50  0001 C CNN
+	1    2150 5400
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	2350 5600 2350 5400
 $EndSCHEMATC
