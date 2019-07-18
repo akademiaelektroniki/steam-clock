@@ -17,5 +17,6 @@
 "Src/main.o"
 "Src/stm32f0xx_hal_msp.o"
 "Src/stm32f0xx_it.o"
+"Src/syscalls.o"
 "Src/system_stm32f0xx.o"
 "startup/startup_stm32f030x6.o"

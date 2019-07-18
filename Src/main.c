@@ -38,10 +38,11 @@
  ******************************************************************************
  */
 /*
- * Bart's Steam clock v0.3
+ * Bart's Steam clock v0.5
  * correct set enter time
  * added git repository
- *
+ * 0.4 only ondemand mode
+ * 0.5 ondemand mode as option
  */
 
 /* USER CODE END Header */
@@ -123,8 +124,10 @@ RTC_HandleTypeDef hrtc;
 int hours;
 int minutes;
 int seconds;
-int settings = 0;
+int settings = 0; //settings mode
 int set_delay = 100;
+int active_time = 0;
+int mode = 1; //0- force, 1- ondemand
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -176,8 +179,15 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 	while (1) {
+	
+	if(SET){
+	
+		active_time = 0;
+		HAL_Delay(50);
 
+	}
 
+	while(active_time < 10 || mode == 0){
 		//___________________SECTION 1 -setting clock
 
 		if (CLEAR) { //clear button enter clock set.
@@ -190,7 +200,7 @@ int main(void)
 
 			if (CLEAR) {
 				settings++;
-				if (settings >= 4) {
+				if (settings >= 5) {
 					settings = 0;
 				}
 				HAL_Delay(300);
@@ -210,6 +220,16 @@ int main(void)
 				display_twice(3, minutes);
 			} else if (settings == 3) {
 				display_twice(3, seconds);
+			} else if (settings == 4){
+				
+				if(mode == 0){
+					
+					display(2, 10);
+
+				}else if(mode == 1){
+
+					display(2, 11);
+				}
 			}
 
 			ALL_OFF
@@ -264,23 +284,55 @@ int main(void)
 				}
 
 			}
+
+			if(settings ==4){
+				
+				if(SET) {
+					if(mode == 0){
+					
+						mode = 1;
+
+					}else if(mode == 1){
+
+						mode = 0;
+					
+					}
+					HAL_Delay(set_delay);
+				}
+			}
 		}
 
 		//___________________SECTION 2 -display clock
 		if (SET) {
 			display_twice(3, seconds);
+			active_time = 0;//reset active time when pressed
 		} else {
 			display_twice(1, hours);
 			display_twice(3, minutes);
 		}
 
 		//___________________SECTION 3 -read from RTC
+		
+
 
 		HAL_RTC_GetDate(&hrtc, &gDate, RTC_FORMAT_BIN);
 		HAL_RTC_GetTime(&hrtc, &gTime, RTC_FORMAT_BIN);
+		
+		//after each second counter change, add 1 to counter variable
+		//except settings mode and seconds check
+		if(seconds != gTime.Seconds && settings == 0 && !SET){
+
+			active_time++;
+
+		}
+
 		hours = gTime.Hours;
 		minutes = gTime.Minutes;
 		seconds = gTime.Seconds;
+
+		//___________________SECTION 4 -exit active mode
+
+	}
 
     /* USER CODE END WHILE */
 
@@ -561,8 +613,27 @@ void display(int position, int number) {
 			SF_ON;
 			break;
 
+		case 10://F letter(force mode)
+			SA_ON;
+			SG_ON;
+			SE_ON;
+			SF_ON;
+			break;
+
+		case 11://O letter(ondemand mode)
+			SA_ON;
+			SB_ON;
+			SC_ON;
+			SD_ON;
+			SE_ON;
+			SF_ON;
+			break;
+
+
 		}
 	}
+	WAIT;
+	ALL_OFF;
 }
 
 void display_twice(int position, int number) {
@@ -597,9 +668,7 @@ void display_twice(int position, int number) {
 	}
 
 	display(position, first_digit);
-	WAIT;
 	display(position + 1, second_digit);
-	WAIT;
 
 }
 /* USER CODE END 4 */
